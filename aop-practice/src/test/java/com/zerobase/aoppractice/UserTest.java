@@ -24,7 +24,6 @@ public class UserTest {
 
         Store store = new Store();
 
-        store.setVisitCountByUser(11);
 
         // When
         user.visitTo(store);
