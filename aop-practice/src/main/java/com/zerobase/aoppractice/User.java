@@ -22,7 +22,4 @@ public class User {
         store.visitedBy(this);
     }
 
-//    public void visitTo(Library library) {
-//        library.visitedBy(this);
-//    }
 }
