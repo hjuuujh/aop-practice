@@ -1,9 +1,13 @@
 package com.zerobase.aoppractice;
 
-public class Store {
+import org.springframework.stereotype.Component;
+
+@Component
+public class Store extends StoreAbstract{
     private String name;
 
 
+    @AlarmGreetingMachine
     public void visitedBy(User user) {
         // 핵심 1
         greeting(user);
@@ -19,7 +23,10 @@ public class Store {
 //        greetingMachine.greet(user);
 
         // decorator
-        IGreetingMachine greetingMachine = new DancingGreetingMachineDecorator(new AlarmGreetingMachineDecorator(new GreetingMachine()));
-        greetingMachine.greet(user);
+//        IGreetingMachine greetingMachine = new DancingGreetingMachineDecorator(new AlarmGreetingMachineDecorator(new GreetingMachine()));
+//        greetingMachine.greet(user);
+
+        // aop
+
     }
 }

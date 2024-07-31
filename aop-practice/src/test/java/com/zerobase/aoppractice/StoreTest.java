@@ -4,22 +4,25 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.junit.jupiter.api.Assertions.*;
+
 
 @SpringBootTest
-public class UserTest {
+public class StoreTest {
     @Autowired
     private Store store;
+
     @Autowired
     private Library library;
 
     @Test
     public void test() {
         // Given
-        User user = new User();
+//        Store store = new Store();
 
         // When & Then
-        assertThat(user.greeting()).isEqualTo("hello");
+        assertThat(store.getOperationTime()).isEqualTo("AM 08:00 ~ PM 08:00");
     }
 
     @Test
@@ -28,13 +31,11 @@ public class UserTest {
         User user = new User();
         user.setName("스프링아카데미아");
 
-//        Store store = new Store();
         store.setVisitCountByUser(11);
 
-        // When
-        user.visitTo(store);
 
-        // Then
+        // When & Then
+        user.visitTo(store);
     }
 
     @Test
@@ -45,10 +46,21 @@ public class UserTest {
 
         library.setVisitCountByUser(11);
 
-        // When
-        user.visitTo(library);
 
-        // Then
+        // When & Then
+        user.visitTo(store);
     }
 
+    @Test
+    public void isVIPUser() {
+        // Given
+        Store store = new Store();
+        store.setVisitCountByUser(11);
+
+        // When
+        boolean result = store.isVIP(new User());
+
+        // Then
+        assertThat(result).isTrue();
+    }
 }
